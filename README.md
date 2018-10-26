@@ -4,16 +4,12 @@ ArrayPagerAdapter
 Small and simple library that has custom ViewPager adapters which are able to change data dynamically.
 ![demo](https://raw.githubusercontent.com/takaaki7/ArrayPagerAdapter/master/art/demo_record.gif)
 
-Sample application is available on the Play Store.
-
-[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_large.png)](https://play.google.com/store/apps/details?id=com.demo.arraypargeradapter&referrer=utm_source%3Dgithub)
-
 # Usage
 
 This library includes 3 useful adapters like general ViewPager's : `FragmentStatePagerAdapter`, `FragmentPagerAdapter`, and `PagerAdapter`.
 
 ArrayPagerAdapters contain items passed from outside internally. You can change data dynamically by calling adapter's methods like `add(T item)`, `remove(int position)`.  
-## 1 ArrayFragmentStatePagerAdapter
+## 1. ArrayFragmentStatePagerAdapter
 
 Implemented based on `android.support.v4.app.FragmentStatePagerAdapter`.
 
@@ -48,7 +44,7 @@ class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<String> {
 __Constraints:__ Item class (generic type `T`) must be implementation of `Serializable` or `Parcelable` because the adapter automatically save and restore items state.
 For example, above example use `String` that is implementation of `Serializable`.
 
-## 2 ArrayFragmentPagerAdapter
+## 2. ArrayFragmentPagerAdapter
 
 Implemented based on `android.support.v4.app.FragmentPagerAdapter`.
 
@@ -69,7 +65,7 @@ class MyFragmentPagerAdapter extends ArrayFragmentPagerAdapter<String> {
 }
 ```
 
-## 3 ArrayViewPagerAdapter
+## 3. ArrayViewPagerAdapter
 
 If you want to use View to create page, you can use this adapter.
 Subclass of `ArrayViewPagerAdapter` just need to implement `getView()` and return a view of the page.
@@ -108,10 +104,22 @@ Sample usage is available in demo directory.
 
 # Download
 
+**Step 1.** Add the JitPack repository to your build file
+Add it in your root build.gradle at the end of repositories:
 ```
-implementation 'com.nakama.arraypageradapter:arraypageradapter:0.1.3'
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
-
+**Step 2.** Add the dependency
+```
+dependencies {
+    implementation 'com.github.takaaki7:ArrayPagerAdapter:0.1.4'
+}
+```
 
 
 License
