@@ -1,20 +1,21 @@
 package com.nakama.arraypageradapter;
 
 import android.annotation.SuppressLint;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 /**
  * ViewPager adapter that handles Fragments and items.
  * You can use this adapter if there is a few number of pages and no need to save states (or implement by yourself).
  * Subclasses of this class just need to implement getFragment() and return a fragment associated with position and item.
+ *
  * @param <T> item type
  */
 public abstract class ArrayFragmentPagerAdapter<T> extends ArrayPagerAdapter<T> {
@@ -39,9 +40,14 @@ public abstract class ArrayFragmentPagerAdapter<T> extends ArrayPagerAdapter<T> 
         fragmentManager = fm;
     }
 
+    private static String makeFragmentName(long id) {
+        return "android:switcher:" + id;
+    }
+
     /**
      * Return the Fragment associated with a specified position and item.
-     * @param item item of this page.
+     *
+     * @param item     item of this page.
      * @param position position of this page.
      * @return fragment that represent this page.
      */
@@ -76,7 +82,6 @@ public abstract class ArrayFragmentPagerAdapter<T> extends ArrayPagerAdapter<T> 
 
         return super.instantiateItem(container, position);
     }
-
 
     @SuppressLint("CommitTransaction")
     @Override
@@ -169,10 +174,6 @@ public abstract class ArrayFragmentPagerAdapter<T> extends ArrayPagerAdapter<T> 
             return getItemWithId(position).id;
         }
         return -1;
-    }
-
-    private static String makeFragmentName(long id) {
-        return "android:switcher:" + id;
     }
 
 }

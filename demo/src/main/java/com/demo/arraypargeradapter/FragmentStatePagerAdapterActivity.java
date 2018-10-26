@@ -1,11 +1,6 @@
 package com.demo.arraypargeradapter;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +10,22 @@ import com.nakama.arraypageradapter.ArrayFragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static butterknife.ButterKnife.findById;
 
 /**
  * Created by nakama on 2016/03/31.
  */
 public class FragmentStatePagerAdapterActivity extends AppCompatActivity {
 
-    @Bind(R.id.control_view)
+    @BindView(R.id.control_view)
     ControlView controlView;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager viewPager;
 
     @Override
@@ -46,19 +44,6 @@ public class FragmentStatePagerAdapterActivity extends AppCompatActivity {
         controlView.setItemCreator(creator);
     }
 
-    private class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<Dog> {
-
-        public MyStatePagerAdapter(FragmentManager fm, ArrayList<Dog> dogs) {
-            super(fm, dogs);
-        }
-
-        @Override
-        public Fragment getFragment(Dog item, int position) {
-            return MyFragment.newInstance(item);
-        }
-    }
-
-
     public static class MyFragment extends Fragment {
         static MyFragment newInstance(Dog dog) {
             Bundle bundle = new Bundle();
@@ -74,10 +59,24 @@ public class FragmentStatePagerAdapterActivity extends AppCompatActivity {
             super.onCreateView(inflater, container, savedInstanceState);
             View v = inflater.inflate(R.layout.item_dog_page, container, false);
             Dog dog = getArguments().getParcelable("data");
-            ((TextView) findById(v, R.id.name_txt)).setText(dog.getName());
-            ((TextView) findById(v, R.id.favorite_txt)).setText(dog.getFavoriteFood());
-            ((TextView) findById(v, R.id.age_txt)).setText(String.valueOf(dog.getAge()));
+
+            ((TextView) v.findViewById(R.id.name_txt)).setText(dog.getName());
+            ((TextView) v.findViewById(R.id.favorite_txt)).setText(dog.getFavoriteFood());
+            ((TextView) v.findViewById(R.id.age_txt)).setText(String.valueOf(dog.getAge()));
+
             return v;
+        }
+    }
+
+    private class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<Dog> {
+
+        public MyStatePagerAdapter(FragmentManager fm, ArrayList<Dog> dogs) {
+            super(fm, dogs);
+        }
+
+        @Override
+        public Fragment getFragment(Dog item, int position) {
+            return MyFragment.newInstance(item);
         }
     }
 

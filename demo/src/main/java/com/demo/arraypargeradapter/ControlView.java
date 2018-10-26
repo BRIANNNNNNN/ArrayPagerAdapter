@@ -11,7 +11,7 @@ import com.nakama.arraypageradapter.ArrayPagerAdapter;
 
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -20,9 +20,9 @@ import butterknife.OnClick;
  */
 public class ControlView extends ScrollView {
 
-    @Bind(R.id.remove_edit)
+    @BindView(R.id.remove_edit)
     public EditText removeEdit;
-    @Bind(R.id.add_position_edit)
+    @BindView(R.id.add_position_edit)
     public EditText addPositionEdit;
 
     private ArrayPagerAdapter adapter;

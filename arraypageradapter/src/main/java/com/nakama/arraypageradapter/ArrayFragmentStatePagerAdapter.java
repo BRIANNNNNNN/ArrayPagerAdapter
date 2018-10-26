@@ -7,9 +7,6 @@ package com.nakama.arraypageradapter;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +15,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * ViewPager adapter that handles data and fragments' states.
@@ -37,6 +38,7 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
     private ArrayList<Fragment.SavedState> mSavedState = new ArrayList<>();
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private Fragment mCurrentPrimaryItem = null;
+    private boolean mTypeChecked = false;
 
     public ArrayFragmentStatePagerAdapter(FragmentManager fm) {
         super();
@@ -135,7 +137,6 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
     @Override
     public void startUpdate(ViewGroup container) {
     }
-
 
     @SuppressLint("CommitTransaction")
     @Override
@@ -289,8 +290,6 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
         }
     }
 
-    private boolean mTypeChecked = false;
-
     private void checkItemTypeIsSupported() {
         if (!mTypeChecked) {
             if (getItems() != null && getItems().size() > 0) {
@@ -307,6 +306,29 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
                 } else {
                     throw new IllegalArgumentException("Items of " + TAG + " list must be subclass of ArrayList.");
                 }
+            }
+        }
+    }
+
+    private Fragment findFragmentByItem(Object item) {
+        List<Fragment> fragments = mFragmentManager.getFragments();
+        if (fragments == null) return null;
+        for (Fragment fragment : fragments) {
+            if (fragment != null) {
+                View view = fragment.getView();
+                if (view != null && item == view.getTag(R.id.avpa_view_tag_key)) {
+                    return fragment;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void setTags(List<IdentifiedItem<T>> items) {
+        for (int i = 0; i < mFragments.size(); i++) {
+            Fragment fragment = mFragments.get(i);
+            if (fragment != null && fragment.getView() != null) {
+                fragment.getView().setTag(R.id.avpa_view_tag_key, items.get(i));
             }
         }
     }
@@ -342,29 +364,6 @@ public abstract class ArrayFragmentStatePagerAdapter<T> extends ArrayPagerAdapte
         @Override
         public ArrayList<Parcelable> restoreItems(Bundle bundle) {
             return bundle.getParcelableArrayList(SAVE_KEY);
-        }
-    }
-
-    private Fragment findFragmentByItem(Object item) {
-        List<Fragment> fragments = mFragmentManager.getFragments();
-        if (fragments == null) return null;
-        for (Fragment fragment : fragments) {
-            if (fragment != null) {
-                View view = fragment.getView();
-                if (view != null && item == view.getTag(R.id.avpa_view_tag_key)) {
-                    return fragment;
-                }
-            }
-        }
-        return null;
-    }
-
-    private void setTags(List<IdentifiedItem<T>> items) {
-        for (int i = 0; i < mFragments.size(); i++) {
-            Fragment fragment = mFragments.get(i);
-            if (fragment != null && fragment.getView() != null) {
-                fragment.getView().setTag(R.id.avpa_view_tag_key, items.get(i));
-            }
         }
     }
 }

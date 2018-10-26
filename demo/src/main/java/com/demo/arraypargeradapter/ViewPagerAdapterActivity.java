@@ -1,8 +1,6 @@
 package com.demo.arraypargeradapter;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +8,9 @@ import android.widget.TextView;
 
 import com.nakama.arraypageradapter.ArrayViewPagerAdapter;
 
-import butterknife.Bind;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -18,9 +18,9 @@ import butterknife.ButterKnife;
  */
 public class ViewPagerAdapterActivity extends AppCompatActivity {
 
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager viewPager;
-    @Bind(R.id.control_view)
+    @BindView(R.id.control_view)
     ControlView controlView;
 
     @Override
