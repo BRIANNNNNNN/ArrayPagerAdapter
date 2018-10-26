@@ -1,5 +1,9 @@
 Change Log
 ==========
+# Version 0.1.4
+* Updated plugins, dependencies and Tests
+* Increased minSdkVersion to 14 (migration to AndroidX)
+* Minor visual corrections with sample
 
 # Version 0.1.3
 * Fix: Calling `ArrayFragmentStatePagerAdapter.add(index, item)` sequentially causes empty view. 
