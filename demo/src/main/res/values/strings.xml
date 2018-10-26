@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ArrayPargerAdapter</string>
+    <string name="app_name">ArrayPagerAdapter</string>
     <string name="label_fragment_state">ArrayFragmentStatePagerAdapter</string>
     <string name="label_fragment">ArrayFragmentPagerAdapter</string>
     <string name="label_view_state">ArrayViewPagerAdapter</string>

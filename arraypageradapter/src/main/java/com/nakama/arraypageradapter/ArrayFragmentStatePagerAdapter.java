@@ -1,9 +1,5 @@
 package com.nakama.arraypageradapter;
 
-/**
- * Created by nakama on 2016/04/01.
- */
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.demo.arraypargeradapter;
+package com.demo.arraypageradapter;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.demo.arraypargeradapter.R;
 import com.nakama.arraypageradapter.ArrayFragmentStatePagerAdapter;
 
 import java.util.ArrayList;

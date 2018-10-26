@@ -34,8 +34,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
 class MyStatePagerAdapter extends ArrayFragmentStatePagerAdapter<String> {
 
-    public MyStatePagerAdapter(FragmentManager fm, String[] datas) {
-        super(fm, datas);
+    public MyStatePagerAdapter(FragmentManager fm, String[] data) {
+        super(fm, data);
     }
 
     @Override
@@ -58,8 +58,8 @@ Usage is almost the same as `ArrayFragmentStatePagerAdapter`, and item class doe
 ```
 class MyFragmentPagerAdapter extends ArrayFragmentPagerAdapter<String> {
 
-    public MyFragmentPagerAdapter(FragmentManager fm, String[] datas) {
-        super(fm, datas);
+    public MyFragmentPagerAdapter(FragmentManager fm, String[] data) {
+        super(fm, data);
     }
 
     @Override
@@ -109,7 +109,7 @@ Sample usage is available in demo directory.
 # Download
 
 ```
-compile 'com.nakama.arraypageradapter:arraypageradapter:0.1.3'
+implementation 'com.nakama.arraypageradapter:arraypageradapter:0.1.3'
 ```
 
 

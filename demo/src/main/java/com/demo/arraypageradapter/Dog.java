@@ -1,4 +1,4 @@
-package com.demo.arraypargeradapter;
+package com.demo.arraypageradapter;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,10 +9,20 @@ import android.os.Parcelable;
 
 public class Dog implements Parcelable {
 
+    public static final Creator<Dog> CREATOR = new Creator<Dog>() {
+        @Override
+        public Dog createFromParcel(Parcel in) {
+            return new Dog(in);
+        }
+
+        @Override
+        public Dog[] newArray(int size) {
+            return new Dog[size];
+        }
+    };
     private String name;
     private String favoriteFood;
     private int age;
-
 
     public Dog(String name, String favoriteFood, int age) {
         this.name = name;
@@ -32,18 +42,6 @@ public class Dog implements Parcelable {
         dest.writeString(favoriteFood);
         dest.writeInt(age);
     }
-
-    public static final Creator<Dog> CREATOR = new Creator<Dog>() {
-        @Override
-        public Dog createFromParcel(Parcel in) {
-            return new Dog(in);
-        }
-
-        @Override
-        public Dog[] newArray(int size) {
-            return new Dog[size];
-        }
-    };
 
     @Override
     public int describeContents() {

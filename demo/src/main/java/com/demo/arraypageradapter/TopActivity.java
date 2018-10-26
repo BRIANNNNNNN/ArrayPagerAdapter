@@ -1,10 +1,12 @@
-package com.demo.arraypargeradapter;
+package com.demo.arraypageradapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
+import com.demo.arraypargeradapter.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 

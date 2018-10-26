@@ -1,4 +1,4 @@
-package com.demo.arraypargeradapter;
+package com.demo.arraypageradapter;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.demo.arraypargeradapter.R;
 import com.nakama.arraypageradapter.ArrayPagerAdapter;
 
 import java.util.Random;

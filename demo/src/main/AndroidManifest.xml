@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TopActivity"
+            android:name="com.demo.arraypageradapter.TopActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,17 +16,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FragmentStatePagerAdapterActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/label_fragment_state" />
+            android:name="com.demo.arraypageradapter.FragmentStatePagerAdapterActivity"
+            android:label="@string/label_fragment_state"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".FragmentPagerAdapterActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/label_fragment" />
+            android:name="com.demo.arraypageradapter.FragmentPagerAdapterActivity"
+            android:label="@string/label_fragment"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ViewPagerAdapterActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/label_view_state" />
+            android:name="com.demo.arraypageradapter.ViewPagerAdapterActivity"
+            android:label="@string/label_view_state"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

@@ -1,19 +1,19 @@
-package com.demo.arraypargeradapter;
+package com.demo.arraypageradapter;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.demo.arraypargeradapter.R;
 import com.nakama.arraypageradapter.ArrayFragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
@@ -45,19 +45,6 @@ public class FragmentPagerAdapterActivity extends AppCompatActivity {
         controlView.setAdapter(adapter);
     }
 
-    private class MyStatePagerAdapterStateSerializable extends ArrayFragmentPagerAdapter<String> {
-
-        public MyStatePagerAdapterStateSerializable(FragmentManager fm, ArrayList<String> datas) {
-            super(fm, datas);
-        }
-
-        @Override
-        public Fragment getFragment(String item, int position) {
-            return MyFragment.newInstance(item);
-        }
-
-    }
-
     public static class MyFragment extends Fragment {
         static MyFragment newInstance(String text) {
             Bundle bundle = new Bundle();
@@ -77,5 +64,18 @@ public class FragmentPagerAdapterActivity extends AppCompatActivity {
             textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return textView;
         }
+    }
+
+    private class MyStatePagerAdapterStateSerializable extends ArrayFragmentPagerAdapter<String> {
+
+        public MyStatePagerAdapterStateSerializable(FragmentManager fm, ArrayList<String> datas) {
+            super(fm, datas);
+        }
+
+        @Override
+        public Fragment getFragment(String item, int position) {
+            return MyFragment.newInstance(item);
+        }
+
     }
 }
